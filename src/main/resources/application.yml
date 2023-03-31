@@ -1,0 +1,40 @@
+##Application Name to appear in Azure App Insights
+spring:
+  devtools:
+    restart:
+      poll-interval: 2s
+      quiet-period: 1s
+  profiles:
+    active: dev
+  application:
+    name: ideas2it-healthcare-service
+
+#  cache:
+#    cache-names: validation-rules-messages-codes
+#    caffeine:
+#      # see https://www.javadoc.io/doc/com.github.ben-manes.caffeine/caffeine/2.2.2/com/github/benmanes/caffeine/cache/CaffeineSpec.html
+#      spec:
+#        validation-rules-messages-codes: expireAfterWrite=900s,softValues # cache is going to be evicted every 15 minutes
+server:
+  port: 8080
+  application:
+    name: ideas2it-healthcare-service
+##Properties for Prometheus End Points
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info,metrics
+##OpenAPI To Enable
+springdoc:
+  swagger-ui.path: "/swagger/swagger-ui-custom.html"
+  api-docs.path: "/swagger/api-docs"
+
+ideas2it:
+  pagination:
+    page-size:
+      default: 1
+    page-number:
+      default: 1
+  sorting:
+    default: id
